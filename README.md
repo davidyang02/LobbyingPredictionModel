@@ -31,6 +31,9 @@ pip install pandas numpy scikit-learn seaborn matplotlib imbalanced-learn
 - **Gradient Boosting Classifier** – Boosting-based decision tree model.
 - **XGBoost Classifier** – Optimized gradient boosting model.
 
+## Note:
+- Missing Repository is missing primary data set, due to file size.
+
 ## License
 This project is open-source and available under the MIT License.
 
