@@ -2,7 +2,7 @@
 
 A machine learning project that predicts lobbying success using Canadian lobbying registrations data. The model determines whether a lobbying attempt will receive government funding based on features such as subject matter, registrant location, organizational structure, and target institution.
 
-## 📊 Results
+## Results
 
 ### Model Performance (Random Forest Classifier)
 
@@ -20,14 +20,14 @@ When predicting government funding success (Class = 1), the model identified the
 - **Target Institution**: Natural Resources Canada (44.8%), Finance Canada (25.1%), Agriculture Canada (11.1%)
 - **Region (Area Code)**: Ottawa-613 (45.8%), Toronto-416 (24.5%)
 
-## 🔧 Features
+## Features
 
 - **Data Preprocessing**: Handling missing values with imputation, encoding categorical features, feature scaling with StandardScaler
 - **Class Imbalance Handling**: RandomUnderSampler to address 33/67 class distribution
 - **Multiple Models**: Logistic Regression, Random Forest, Gradient Boosting, XGBoost
 - **Evaluation Metrics**: Accuracy, Precision, Recall, F1-Score, Confusion Matrix, ROC Curve, Lift Chart, Cumulative Gains
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 LobbyingPredictionModel/
@@ -38,7 +38,7 @@ LobbyingPredictionModel/
 └── README.md             # This file
 ```
 
-## 📥 Data
+## Data
 
 ### Primary Dataset (Not Included)
 The primary dataset `merged lobby.csv` (~995K rows) is not included due to file size. 
@@ -63,7 +63,7 @@ The primary dataset `merged lobby.csv` (~995K rows) is not included due to file 
 | `DIRECT_INT_IND_INT_DIRECT` | Direct interest indicator |
 | `INSTITUTION` | Target government institution |
 
-## 🚀 Installation
+## Installation
 
 1. Clone the repository:
 ```bash
@@ -83,7 +83,7 @@ pip install -r requirements.txt
 jupyter notebook lobbyingModel.ipynb
 ```
 
-## 📈 Models Used
+## Models Used
 
 | Model | Description |
 |-------|-------------|
@@ -92,6 +92,6 @@ jupyter notebook lobbyingModel.ipynb
 | **Gradient Boosting Classifier** | Boosting-based decision tree model |
 | **XGBoost Classifier** | Optimized gradient boosting |
 
-## 📄 License
+## License
 
 This project is open-source and available under the [MIT License](LICENSE).
