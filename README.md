@@ -1,41 +1,97 @@
 # Lobbying Prediction Model
 
-## Overview
-This project predicts lobbying success using a dataset containing lobbying registrations, financial indicators, and categorical variables such as city and province. The model aims to determine whether a lobbying attempt receives government funding.
+A machine learning project that predicts lobbying success using Canadian lobbying registrations data. The model determines whether a lobbying attempt will receive government funding based on features such as subject matter, registrant location, organizational structure, and target institution.
 
-## Features
-- **Data Preprocessing**:
-  - Handling missing values with imputation.
-  - Encoding categorical features.
-  - Feature scaling using StandardScaler.
-  - Addressing class imbalance using `RandomUnderSampler`.
-- **Model Training & Evaluation**:
-  - Multiple machine learning models for classification.
-  - Performance evaluation using accuracy, precision, recall, and F1-score.
-- **Visualization & Insights**:
-  - Confusion Matrix: Summarizes a classification model's performance by showing the counts of true positives, true negatives, false positives, and false negatives.
-  - Cumulative Gains Chart: Shows model effectiveness in capturing true positives.
-  - Lift Chart: Illustrates how much better the model performs compared to random guessing.
-  - ROC Curve: Plots the trade-off between True Positive Rate (TPR) and False Positive Rate (FPR).
+## 📊 Results
 
-## Installation
-Ensure you have Python installed, then install the required dependencies:
+### Model Performance (Random Forest Classifier)
 
-```bash
-pip install pandas numpy scikit-learn seaborn matplotlib imbalanced-learn
+| Metric | Score |
+|--------|-------|
+| **Accuracy** | 71.5% |
+| **Precision** | 70.3% |
+| **Recall** | 71.7% |
+| **F1 Score** | 70.5% |
+
+### Key Findings
+When predicting government funding success (Class = 1), the model identified these top predictive features:
+
+- **Subject Matter**: Budget (8.0%), Economic Development (7.8%), Infrastructure (5.9%)
+- **Target Institution**: Natural Resources Canada (44.8%), Finance Canada (25.1%), Agriculture Canada (11.1%)
+- **Region (Area Code)**: Ottawa-613 (45.8%), Toronto-416 (24.5%)
+
+## 🔧 Features
+
+- **Data Preprocessing**: Handling missing values with imputation, encoding categorical features, feature scaling with StandardScaler
+- **Class Imbalance Handling**: RandomUnderSampler to address 33/67 class distribution
+- **Multiple Models**: Logistic Regression, Random Forest, Gradient Boosting, XGBoost
+- **Evaluation Metrics**: Accuracy, Precision, Recall, F1-Score, Confusion Matrix, ROC Curve, Lift Chart, Cumulative Gains
+
+## 📁 Project Structure
+
+```
+LobbyingPredictionModel/
+├── lobbyingModel.ipynb    # Main Jupyter notebook with analysis
+├── canadacities.csv       # Canadian cities reference data
+├── requirements.txt       # Python dependencies
+├── LICENSE               # MIT License
+└── README.md             # This file
 ```
 
-## Models Used
-- **Logistic Regression** – Baseline linear model.
-- **Random Forest Classifier** – Ensemble learning with decision trees.
-- **Gradient Boosting Classifier** – Boosting-based decision tree model.
-- **XGBoost Classifier** – Optimized gradient boosting model.
+## 📥 Data
 
-## Note:
-- Missing Repository is missing primary data set, due to file size.
+### Primary Dataset (Not Included)
+The primary dataset `merged lobby.csv` (~995K rows) is not included due to file size. 
 
-## License
-This project is open-source and available under the MIT License.
+**To obtain the data:**
+1. Visit the [Office of the Commissioner of Lobbying of Canada](https://lobbycanada.gc.ca/en/)
+2. Download the lobbying registration exports
+3. Merge the Primary Export and Subject Matters Export files
+4. Save as `merged lobby.csv` in the project root
 
+### Data Dictionary
 
+| Column | Description |
+|--------|-------------|
+| `GOVT_FUND_IND_FIN_GOUV` | Target variable: Government funding indicator (Y/N) |
+| `SUBJ_MATTER_OBJET` | Subject matter of lobbying activity |
+| `RGSTRNT_ADDRESS_ADRESSE_DCLRNT` | Registrant address (processed to city) |
+| `RGSTRNT_TEL_DCLRNT` | Registrant phone (area code used as region proxy) |
+| `PARENT_IND_SOC_MERE` | Parent company indicator |
+| `COALITION_IND` | Coalition indicator |
+| `SUBSIDIARY_IND_FILIALE` | Subsidiary indicator |
+| `DIRECT_INT_IND_INT_DIRECT` | Direct interest indicator |
+| `INSTITUTION` | Target government institution |
 
+## 🚀 Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/davidyang02/LobbyingPredictionModel.git
+cd LobbyingPredictionModel
+```
+
+2. Install dependencies:
+```bash
+pip install -r requirements.txt
+```
+
+3. Obtain the primary dataset (see Data section above)
+
+4. Run the Jupyter notebook:
+```bash
+jupyter notebook lobbyingModel.ipynb
+```
+
+## 📈 Models Used
+
+| Model | Description |
+|-------|-------------|
+| **Logistic Regression** | Baseline linear model |
+| **Random Forest Classifier** | Ensemble learning with decision trees (best performer) |
+| **Gradient Boosting Classifier** | Boosting-based decision tree model |
+| **XGBoost Classifier** | Optimized gradient boosting |
+
+## 📄 License
+
+This project is open-source and available under the [MIT License](LICENSE).
